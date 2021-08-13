@@ -10,12 +10,13 @@ public class CampaignGroupModel {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	private long id;
 	private String name;
 	private String description;
 
 	
-	public int getId() {
+
+	public long getId() {
 		return id;
 	}
 
@@ -27,7 +28,7 @@ public class CampaignGroupModel {
 		return description;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

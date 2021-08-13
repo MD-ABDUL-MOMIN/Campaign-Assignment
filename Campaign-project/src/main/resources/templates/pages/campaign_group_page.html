@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>campaignGroup</title>
+
+</head>
+
+<body >
+   <h1>Campaign group page</h1>
+   
+   <table>
+    <thead>
+        <tr>
+            <th> Name </th>
+            <th> description </th>
+            <th>update data</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+	<tr th:if="${campaignGroupList.empty}">
+            <td colspan="2"> No campaign Group is Available </td>
+        </tr>
+        <tr th:each="CampaignGroupModel : ${campaignGroupList}">
+            <td><span th:text="${CampaignGroupModel.name}"> name </span></td>
+            <td><span th:text="${CampaignGroupModel.description}"> description </span></td>
+          
+            <td> <a href="#" th:href="@{/campaigngroup/edit(id=${CampaignGroupModel.id})}">edit</a></td>
+        </tr>
+    </tbody>
+</table>
+<button><a href="#" th:href="@{/campaigngroup/add/}">Create</a></button>
+</body>
+
+</html>
