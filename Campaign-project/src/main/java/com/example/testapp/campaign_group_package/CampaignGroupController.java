@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class CampaignGroupController {
 
 	@Autowired
-	private CampaignGroupService campaignGroupService;
+	CampaignGroupService campaignGroupService;
 
     //Show campaign group list
 

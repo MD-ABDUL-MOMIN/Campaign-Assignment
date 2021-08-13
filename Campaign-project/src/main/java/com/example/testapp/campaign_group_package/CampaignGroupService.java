@@ -47,4 +47,10 @@ public class CampaignGroupService {
 
 	}
 
+
+	public List<String> findsAllCampaignGroupNames() {
+		
+		return campaignGroupRepository.findCampaigngroupNames();
+	}
+
 }

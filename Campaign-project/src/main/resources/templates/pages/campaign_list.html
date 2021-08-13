@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>campaign list</title>
+
+</head>
+
+<body>
+	<h1>Campaign list page</h1>
+
+	<table>
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>description</th>
+				<th>start Date</th>
+				<th>endDate</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:if="${campaigns.empty}">
+				<td colspan="2">No campaign is Available</td>
+			</tr>
+			<tr th:each="CampaignModel : ${campaigns}">
+				<td><span th:text="${CampaignModel.name}"> name </span></td>
+				<td><span th:text="${CampaignModel.description}">
+						description </span></td>
+				<td
+					th:text="${#dates.format(CampaignModel.startDate, 'dd-MMM-yyyy')}"></td>
+				<td th:text="${#dates.format(CampaignModel.endDate, 'dd-MMM-yyyy')}"></td>
+			
+				<td><a href="#"
+					th:href="@{/campaign/edit(id=${CampaignModel.id})}">edit</a></td>
+			</tr>
+		</tbody>
+
+	</table>
+	<button>
+		<a th:href="@{/campaign/add/}">Create</a>
+	</button>
+</body>
+
+</html>

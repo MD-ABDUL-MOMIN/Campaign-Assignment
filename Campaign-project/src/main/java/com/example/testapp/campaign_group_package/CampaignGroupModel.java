@@ -57,4 +57,10 @@ public class CampaignGroupModel {
 		this.description = description;
 	}
 
+	@Override
+	public String toString() {
+		return "CampaignGroupModel [id=" + id + ", name=" + name + ", description=" + description + ", campaignList="
+				+ campaignList + "]";
+	}
+
 }
