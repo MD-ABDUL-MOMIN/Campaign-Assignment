@@ -6,45 +6,45 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javassist.NotFoundException;
+
 @Service
 public class CampaignGroupService {
 	
+
 	@Autowired
 	CampaignGroupRepository campaignGroupRepository;
 
 	public List<CampaignGroupModel> getAllCampaignGroup() {
-		
-		 return campaignGroupRepository.findAll();
-		
+
+		return campaignGroupRepository.findAll();
+
 	}
 
+	
 	public CampaignGroupModel findCampaignGroupById(long id) {
-		
-		return campaignGroupRepository.findById(id);
-		
-	}
 
-	public void saveOrUpdateCampaignGroup(CampaignGroupModel campaignGroupModel) {
-			boolean added =true;
-			if(!campaignGroupModel.equals(null)) {
-		CampaignGroupModel campaignGroup = campaignGroupRepository.findById(campaignGroupModel.getId());
-			added = false;
-			campaignGroupRepository.save(campaignGroupModel);
-		}
-		
-		if(added) {
-		   CampaignGroupModel campaignGroup = findCampaignGroupById(campaignGroupModel.getId());
-		
-			campaignGroup.setName(campaignGroupModel.getName());
-			campaignGroup.setDescription(campaignGroupModel.getDescription());
-			campaignGroupRepository.save(campaignGroup);
-			}
-			
-		
-		
-				
-	}
-		
+		return campaignGroupRepository.findById(id);
+
 	}
 	
 
+	public void updateCampaignGroup(CampaignGroupModel campaignGroupModel) {
+
+		try {
+			CampaignGroupModel campaignGroup = campaignGroupRepository.findById(campaignGroupModel.getId());
+			campaignGroup.setName(campaignGroupModel.getName());
+			campaignGroup.setDescription(campaignGroupModel.getDescription());
+			campaignGroupRepository.save(campaignGroup);
+		} catch (Exception e)  {
+			
+		}
+
+	}
+
+	public void saveCampaignGroup(CampaignGroupModel campaignGroupModel) {
+		campaignGroupRepository.save(campaignGroupModel);
+
+	}
+
+}
