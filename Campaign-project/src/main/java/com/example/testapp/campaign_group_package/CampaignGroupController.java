@@ -26,7 +26,7 @@ public class CampaignGroupController {
 		List<CampaignGroupModel> campaignGroupList = new ArrayList<CampaignGroupModel>();
 		campaignGroupList = campaignGroupService.getAllCampaignGroup();
 		model.addAttribute("campaignGroupList", campaignGroupList);
-		return "pages/campaigngroup_list";
+		return "pages/campaignGroup/campaigngroup_list";
 	}
 
 	
@@ -38,7 +38,7 @@ public class CampaignGroupController {
 		CampaignGroupModel camGroupModel = campaignGroupService.findCampaignGroupById(id);
 		model.addAttribute("editableId",id);
 		model.addAttribute("campaigngroupModel", camGroupModel);
-		return "pages/edit_campaigngroup";
+		return "pages/campaignGroup/edit_campaigngroup";
 		
 	}
 
@@ -60,7 +60,7 @@ public class CampaignGroupController {
 		CampaignGroupModel camModel = new CampaignGroupModel();
 		model.addAttribute("campaigngroup", camModel);
 
-		return "pages/campaigngroup_adder";
+		return "pages/campaignGroup/campaigngroup_adder";
 	}
 	
 	

@@ -8,7 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.testapp.campaign_group_package.CampaignGroupModel;
 
@@ -25,12 +27,13 @@ public class CampaignController {
 		campaigns = campaignService.findCampaignList();
 		model.addAttribute("campaigns", campaigns);
 		
-		return "pages/campaign_list";
+		return "pages/campaign/campaign_list";
 	}
 	
 	
 	
-	///New campaign creation get and post mapping
+	
+	/*get and post method for campaign create  m*/
 
 	
 	@GetMapping("/campaign/add")
@@ -44,16 +47,14 @@ public class CampaignController {
 		model.addAttribute("campaignGroups", campaignGroupList);
 	
 
-		return "pages/campaign_adder";
+		return "pages/campaign/campaign_adder";
 	}
 	
 	
 	
 	@PostMapping("/campaign/add")
-	public String saveCampaignGroup(@ModelAttribute CampaignModel campaignModel,@ModelAttribute  CampaignGroupModel campaignGroupModel) {
-		
-		System.out.println("print "+campaignModel.getStartDate());
-		
+	public String saveCampaign(@ModelAttribute CampaignModel campaignModel,@ModelAttribute  CampaignGroupModel campaignGroupModel) {
+				
 		campaignModel.setCampaignGroupModel(campaignGroupModel);
 		
 		campaignService.saveCampaign(campaignModel);
@@ -61,6 +62,33 @@ public class CampaignController {
 		return "redirect:/campaign";
 	}
 	
+	
+	///Campaign group edit Getmapping and postmapping
+	
+		@GetMapping("/campaign/edit")
+		public String modifyCampaignById(@RequestParam("id") long id, Model model) {
+			
+			List<CampaignGroupModel> campaignGroupList = new ArrayList<CampaignGroupModel>();
+			campaignGroupList = campaignService.getCampaignGroups();
+			model.addAttribute("campaignGroups", campaignGroupList);
+			
+			CampaignModel camModel = campaignService.findCampaignById(id);
+			
+			model.addAttribute("editableId",id);
+			model.addAttribute("campaignModel", camModel);
+			
+			return "pages/campaign/edit_campaign";
+			
+		}
+
+		@PostMapping("/campaign/edit/{id}")
+		public String updateCampaignById(@PathVariable long id,CampaignModel campaignModel) {
+	   
+			campaignService.updateCampaignGroup(campaignModel);
+			return "redirect:/campaigngroup";
+
+		}
+
 	
 
 

@@ -32,6 +32,17 @@ public class CampaignService {
 		campaignRepository.save(campaignModel);
 		
 	}
+
+	public CampaignModel findCampaignById(long id) {
+		
+		return campaignRepository.getById(id);
+		
+	}
+
+	public void updateCampaignGroup(CampaignModel campaignModel) {
+		campaignRepository.save(campaignModel);
+		
+	}
 	
 	
 
