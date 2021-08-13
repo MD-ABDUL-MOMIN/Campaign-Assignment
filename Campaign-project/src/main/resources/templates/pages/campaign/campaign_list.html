@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>campaign list</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+	integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+	crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+ <h1 class="text-center">List of Campaign</h1>
+	<table class="table table-striped">
+	
+		<thead>
+			<tr>
+				<th scope="col">Name</th>
+				<th scope="col">description</th>
+				<th scope="col">start Date</th>
+				<th scope="col">endDate</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr scope="row" th:if="${campaigns.empty}">
+				<td colspan="2">No campaign is Available</td>
+			</tr>
+			<tr scope="row" th:each="CampaignModel : ${campaigns}">
+				<td><span th:text="${CampaignModel.name}"> </span></td>
+				<td><span th:text="${CampaignModel.description}">
+						 </span></td>
+				<td
+					th:text="${#dates.format(CampaignModel.startDate, 'dd-MMM-yyyy')}"></td>
+				<td th:text="${#dates.format(CampaignModel.endDate, 'dd-MMM-yyyy')}"></td>
+
+				<td><a href="#"
+					th:href="@{/campaign/edit(id=${CampaignModel.id})}">change</a></td>
+			</tr>
+		</tbody>
+	</table>
+	<button type="button" class="btn btn-primary btn-sm">
+		<a th:href="@{/campaign/add/}">Create new campaign</a>
+	</button>
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Edit Campaign info</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+	integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+	crossorigin="anonymous"></script>
+</head>
+
+<body>
+	<h1 class="text-center">Campaign modify form</h1>
+
+	<form class="row" action="#"
+		th:action="@{/campaign/edit/{id}(id=${editableId})}"
+		th:object="${campaignModel}" method="post">
+
+		<div class="col-md-12">
+			<label class="form-label"> Select CampaignGroup: </label> <select
+				th:object="${campaignGroupModel}">
+				<option th:each="campaignGroupModel: ${campaignGroups}"
+					th:value="${campaignGroupModel.id}"
+					th:text="${campaignGroupModel.name}"></option>
+			</select>
+		</div>
+		<div class="col-md-12">
+			<label class="form-label">Campaign name: </label> <input type="text"
+				class="form-control" th:field="*{name}"
+				value="${campaignModel.name} />
+		</div>
+		<div class="col-md-12">
+			<label class="form-label"> description:</label> <input
+				class="form-control" type="text" th:field="*{description}"
+				value="${campaignModel.description}" />
+		</div>
+		<div class="col-md-12">
+			<label class="form-label"> start Date: </label> <input
+				class="form-control" type="date" th:field="*{startDate}"
+				value="${campaignModel.startDate}" />
+		</div>
+		<div class="col-md-12">
+			<label class="form-label"> end Date: </label>
+			 <input	class="form-control" type="date" th:field="*{endDate}"	value="${campaignModel.endDate}" />
+		</div>
+
+		
+			<input class="btn btn-primary btn-lg btn-block" type="submit" value="reset" />
+	</form>
+
+</body>
+
+</html>
