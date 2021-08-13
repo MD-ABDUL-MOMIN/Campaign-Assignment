@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>modify</title>
+
+</head>
+
+<body>
+ <h1>Campaign modify form</h1>
+ 
+    <form action="#" th:action="@{/campaigngroup/edit/{id}(id=${editableId})}" th:object="${campaigngroupModel}" method="post">
+    	<p>name <input type="text" th:field="*{name}" value="${campaigngroupModel.name}" /></p>
+        <p>description: <input type="text" th:field="*{description}" value="${campaigngroupModel.description}"/></p>
+        <p><input type="submit"  value="reset"/>
+    </form>
+
+</body>
+
+</html>
