@@ -1,11 +1,18 @@
 package com.example.testapp.campaign_group_package;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
-@Entity
+import com.example.testapp.campaign_package.CampaignModel;
+
+@Entity(name = "campaigngroup")
 public class CampaignGroupModel {
 
 	@Id
@@ -14,7 +21,17 @@ public class CampaignGroupModel {
 	private String name;
 	private String description;
 
+	@OneToMany(mappedBy = "campaignGroupModel" ,cascade = CascadeType.ALL)
+	List<CampaignModel> campaignList = new ArrayList<CampaignModel>();
 	
+	
+	public List<CampaignModel> getCampaignList() {
+		return campaignList;
+	}
+
+	public void setCampaignList(List<CampaignModel> campaignList) {
+		this.campaignList = campaignList;
+	}
 
 	public long getId() {
 		return id;

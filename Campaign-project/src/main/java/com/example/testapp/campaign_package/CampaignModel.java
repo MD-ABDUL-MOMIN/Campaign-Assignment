@@ -1,18 +1,19 @@
 package com.example.testapp.campaign_package;
 
 import java.util.Date;
-import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 
 import com.example.testapp.campaign_group_package.CampaignGroupModel;
 
-@Entity
+
+@Entity(name = "campaign")
 public class CampaignModel {
 
 	@Id
@@ -24,9 +25,10 @@ public class CampaignModel {
 	private Date startDate;
 	private Date endDate;
 	
-	@OneToMany
-	List<CampaignGroupModel> campaignGroup;
-
+	@ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="campaign_group_id", nullable=false)
+	private CampaignGroupModel campaignGroupModel;
+	
 	public long getId() {
 		return id;
 	}
@@ -47,9 +49,7 @@ public class CampaignModel {
 		return endDate;
 	}
 
-	public List<CampaignGroupModel> getCampaignGroup() {
-		return campaignGroup;
-	}
+
 
 	public void setId(long id) {
 		this.id = id;
@@ -71,12 +71,5 @@ public class CampaignModel {
 		this.endDate = endDate;
 	}
 
-	public void setCampaignGroup(List<CampaignGroupModel> campaignGroup) {
-		this.campaignGroup = campaignGroup;
-	}
-	
-	
-	
-	
 
 }
