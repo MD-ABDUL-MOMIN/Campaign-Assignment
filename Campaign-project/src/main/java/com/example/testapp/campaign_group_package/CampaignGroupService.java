@@ -10,24 +10,23 @@ import javassist.NotFoundException;
 
 @Service
 public class CampaignGroupService {
-	
 
 	@Autowired
-	CampaignGroupRepository campaignGroupRepository;
+	private CampaignGroupRepository campaignGroupRepository;
+	
 
+	
 	public List<CampaignGroupModel> getTop5CampaignGroup() {
 
 		return campaignGroupRepository.findTop5ByOrderByIdDesc();
 
 	}
 
-	
 	public CampaignGroupModel findCampaignGroupById(long id) {
 
 		return campaignGroupRepository.findById(id);
 
 	}
-	
 
 	public void updateCampaignGroup(CampaignGroupModel campaignGroupModel) {
 
@@ -36,8 +35,9 @@ public class CampaignGroupService {
 			campaignGroup.setName(campaignGroupModel.getName());
 			campaignGroup.setDescription(campaignGroupModel.getDescription());
 			campaignGroupRepository.save(campaignGroup);
-		} catch (Exception e)  {
-			
+		} catch (Exception e) {
+			System.out.println(e);
+
 		}
 
 	}
@@ -47,12 +47,9 @@ public class CampaignGroupService {
 
 	}
 
-
 	public List<CampaignGroupModel> getAllCampaignGroup() {
 		// TODO Auto-generated method stub
 		return campaignGroupRepository.findAll();
 	}
-
-
 
 }

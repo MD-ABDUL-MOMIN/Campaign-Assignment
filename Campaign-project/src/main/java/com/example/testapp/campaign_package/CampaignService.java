@@ -15,40 +15,42 @@ public class CampaignService {
 	private CampaignRepository campaignRepository;
 	@Autowired
 	private CampaignGroupService campaignGroupService;
-	
 
+	
 	public List<CampaignModel> findCampaignList() {
 		
 		return campaignRepository.findAll();
 		
 	}
 
+	
 	public List<CampaignGroupModel> getCampaignGroups() {
 		
 		return campaignGroupService.getAllCampaignGroup();
+		
 	}
 
 	public void saveCampaign(CampaignModel campaignModel) {
-		campaignRepository.save(campaignModel);
 		
+		campaignRepository.save(campaignModel);
+
 	}
 
 	public CampaignModel findCampaignById(long id) {
-		
+
 		return campaignRepository.getById(id);
-		
+
 	}
 
 	public void updateCampaignGroup(CampaignModel campaignModel) {
-		campaignRepository.save(campaignModel);
 		
+		campaignRepository.save(campaignModel);
 	}
 
+	
 	public List<CampaignModel> findTop5CampaignList() {
-		// TODO Auto-generated method stub
+		
 		return campaignRepository.findTop5ByOrderByIdDesc();
 	}
-	
-	
 
 }

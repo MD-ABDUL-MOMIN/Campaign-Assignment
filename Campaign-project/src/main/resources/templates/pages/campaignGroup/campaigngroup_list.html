@@ -3,46 +3,43 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>campaignGroup list</title>
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-	crossorigin="anonymous">
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-	integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-	crossorigin="anonymous"></script>
-
+<link th:rel="stylesheet"
+	th:href="@{/assets/bootstrap/css/bootstrap.min.css} " />
 
 
 </head>
 
-<body >
-  
-   <h1 class="text-center">List of campaigngroup</h1>
-   <table class="table table-striped">
-    
-    <thead>
-        <tr>
-            <th scope="col"> Name </th>
-            <th scope="col"> description </th>
-            <th scope="col">update</th>
-            
-        </tr>
-    </thead>
-    <tbody>
-	<tr  scope="row" th:if="${campaignGroupList.empty}">
-            <td colspan="2"> No campaign Group is Available </td>
-        </tr>
-        <tr  scope="row" th:each="CampaignGroupModel : ${campaignGroupList}">
-            <td><span th:text="${CampaignGroupModel.name}"> name </span></td>
-            <td><span th:text="${CampaignGroupModel.description}"> description </span></td>
-            <td> <a type="button" href="#" th:href="@{/campaigngroup/edit(id=${CampaignGroupModel.id})}">
-               <span><i class="fas fa-edit">edit</i></span></a></td>
-        </tr>
-    </tbody>
-   
-</table>
-<a class="btn btn-outline-primary btn-sm" th:href="@{/campaigngroup/add/}">Create new campaignGroup</a>
+<body>
+
+	<h1 class="text-center">List of campaigngroup</h1>
+	<table class="table table-striped">
+
+		<thead>
+			<tr>
+				<th scope="col">Name</th>
+				<th scope="col">description</th>
+				<th scope="col">update</th>
+
+			</tr>
+		</thead>
+		<tbody>
+			<tr scope="row" th:if="${campaignGroupList.empty}">
+				<td colspan="3">No campaign Group is Available</td>
+			</tr>
+			<tr scope="row" th:each="CampaignGroupModel : ${campaignGroupList}">
+				<td><span th:text="${CampaignGroupModel.name}"> name </span></td>
+				<td><span th:text="${CampaignGroupModel.description}">
+						description </span></td>
+				<td><a type="button" href="#"
+					th:href="@{/campaigngroup/edit(id=${CampaignGroupModel.id})}">
+						<span><i class="fas fa-edit">edit</i></span>
+				</a></td>
+			</tr>
+		</tbody>
+
+	</table>
+	<a class="btn btn-outline-primary btn-sm"
+		th:href="@{/campaigngroup/add/}">Create new campaignGroup</a>
 </body>
 
 </html>

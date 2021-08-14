@@ -3,34 +3,30 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>create compaign group</title>
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-	crossorigin="anonymous">
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-	integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-	crossorigin="anonymous"></script>
+<link th:rel="stylesheet"
+	th:href="@{/assets/bootstrap/css/bootstrap.min.css} " />
 
 </head>
 
-<body >
- <h1 class="text-center">input form for campaignGroup</h1>
-    
-   <form class="row" action="#" th:action="@{/campaigngroup/add}" th:object="${campaigngroup}" method="post">
-    	<div class="col-md-12">
-    	<label class="form-label">CampaignGroup Name: </label>
-    	 <input class="form-control" type="text" th:field="*{name}"/>
-    	</div> 
-    	
-    	<div class="col-md-12">
-    	<label class="form-label">Description:</label>
-    	  <input class="form-control" type="text" th:field="*{description}"/>
-    	</div>
-    	
+<body>
+	<h1 class="text-center">input form for campaignGroup</h1>
 
-        <input class="btn btn-primary  btn-lg btn-block" type="submit" value="Submit" />
-    </form>
+	<form class="row" action="#" th:action="@{/campaigngroup/add}"
+		th:object="${campaigngroup}" method="post">
+		<div class="col-md-12">
+			<label class="form-label">CampaignGroup Name: </label> <input
+				class="form-control" type="text" th:field="*{name}" />
+		</div>
+
+		<div class="col-md-12">
+			<label class="form-label">Description:</label> <input
+				class="form-control" type="text" th:field="*{description}" />
+		</div>
+
+
+		<input class="btn btn-primary  btn-lg btn-block" type="submit"
+			value="Submit" />
+	</form>
 
 </body>
 

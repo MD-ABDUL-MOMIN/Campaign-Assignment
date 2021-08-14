@@ -3,29 +3,29 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>create compaign</title>
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-	crossorigin="anonymous">
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-	integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-	crossorigin="anonymous"></script>
+<link th:rel="stylesheet"
+	th:href="@{/assets/bootstrap/css/bootstrap.min.css} " />
 
 
 </head>
 
 <body>
 	<h1 class="text-center">input form for campaign</h1>
+	
 	<form class="form" action="#" th:action="@{/campaign/add}"
 		th:object="${campaignModel}" method="post">
+		
+		<div scope="row" th:if="${campaignGroups.empty}">
+				<p style="color:red">Please create campaign group first </td>
+		</div>
+		
+		<div scope="row">
 		<div class="col-md-12">
-			<label class="form-label"> Select CampaignGroup: </label> 
-			<select	th:field="*{campaignGroupModel}">
+			<label class="form-label"> Select CampaignGroup: </label> <select
+				th:field="*{campaignGroupModel}">
 				<option th:each="campaignGroupModel: ${campaignGroups}"
 					th:value="${campaignGroupModel.id}"
-					th:text="${campaignGroupModel.name}">
-				</option>
+					th:text="${campaignGroupModel.name}"></option>
 			</select>
 		</div>
 
@@ -45,6 +45,7 @@
 		<div class="col-md-12">
 			<label class="form-label"> end Date: </label> <input
 				class="form-control" type="date" th:field="*{endDate}" />
+		</div>
 		</div>
 
 		<input class="btn btn-primary btn-lg btn-block" type="submit"

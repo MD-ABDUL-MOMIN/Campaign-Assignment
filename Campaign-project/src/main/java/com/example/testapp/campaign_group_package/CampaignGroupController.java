@@ -16,17 +16,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class CampaignGroupController {
 
 	@Autowired
-	CampaignGroupService campaignGroupService;
+	private CampaignGroupService campaignGroupService;
 
-   
+	/*************************** home page ***********************************/
+
 	@GetMapping("/")
-	public String showHome(){
+	public String showHome() {
 		return "pages/home";
-		
+
 	}
-	
-	
-	 //Show campaign group list
+
+	/***************************
+	 * Show campaign group list
+	 ***********************************/
 
 	@GetMapping("/campaigngroup")
 	public String getCampaignGroupPage(Model model) {
@@ -37,32 +39,32 @@ public class CampaignGroupController {
 		return "pages/campaignGroup/campaigngroup_list";
 	}
 
-	
-	/// Getmapping and postmapping to edit campaigngroup
-	
+	/***************************
+	 * Modify campaign Group
+	 ***********************************/
+
 	@GetMapping("/campaigngroup/edit")
 	public String modifyCampaignGroupById(@RequestParam("id") long id, Model model) {
-		
+
 		CampaignGroupModel camGroupModel = campaignGroupService.findCampaignGroupById(id);
-		model.addAttribute("editableId",id);
+		model.addAttribute("editableId", id);
 		model.addAttribute("campaigngroupModel", camGroupModel);
 		return "pages/campaignGroup/edit_campaigngroup";
-		
+
 	}
 
 	@PostMapping("/campaigngroup/edit/{id}")
-	public String updateCampaignGroupById(@PathVariable long id,CampaignGroupModel campaignGroupModel) {
-   
+	public String updateCampaignGroupById(@PathVariable long id, CampaignGroupModel campaignGroupModel) {
+
 		campaignGroupService.updateCampaignGroup(campaignGroupModel);
 		return "redirect:/campaigngroup";
 
 	}
-	
-	
-	
-	///New campaigngroup creation get and post mapping
 
-	
+	/***************************
+	 * add campaign Group
+	 ***********************************/
+
 	@GetMapping("/campaigngroup/add")
 	public String addCampaignGroup(Model model) {
 		CampaignGroupModel camModel = new CampaignGroupModel();
@@ -70,15 +72,13 @@ public class CampaignGroupController {
 
 		return "pages/campaignGroup/campaigngroup_adder";
 	}
-	
-	
-	
+
 	@PostMapping("/campaigngroup/add")
 	public String saveCampaignGroup(@ModelAttribute CampaignGroupModel campaignGroupModel) {
-		
+
 		campaignGroupService.saveCampaignGroup(campaignGroupModel);
 
 		return "redirect:/campaigngroup";
 	}
-	
+
 }
