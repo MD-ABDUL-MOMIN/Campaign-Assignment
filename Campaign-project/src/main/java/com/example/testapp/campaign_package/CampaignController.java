@@ -70,21 +70,20 @@ public class CampaignController {
 			List<CampaignGroupModel> campaignGroupList = new ArrayList<CampaignGroupModel>();
 			campaignGroupList = campaignService.getCampaignGroups();
 			model.addAttribute("campaignGroups", campaignGroupList);
-			
 			CampaignModel camModel = campaignService.findCampaignById(id);
-			
 			model.addAttribute("editableId",id);
 			model.addAttribute("campaignModel", camModel);
+			
 			
 			return "pages/campaign/edit_campaign";
 			
 		}
 
 		@PostMapping("/campaign/edit/{id}")
-		public String updateCampaignById(@PathVariable long id,CampaignModel campaignModel) {
+		public String updateCampaignById(@PathVariable long id,@ModelAttribute CampaignModel campaignModel) {
 	   
 			campaignService.updateCampaignGroup(campaignModel);
-			return "redirect:/campaigngroup";
+			return "redirect:/campaign";
 
 		}
 
