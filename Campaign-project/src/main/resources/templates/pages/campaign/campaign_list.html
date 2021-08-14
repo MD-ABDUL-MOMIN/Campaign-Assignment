@@ -23,6 +23,7 @@
 				<th scope="col">description</th>
 				<th scope="col">start Date</th>
 				<th scope="col">endDate</th>
+				<th scope="col">Modify</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -38,7 +39,7 @@
 				<td th:text="${#dates.format(CampaignModel.endDate, 'dd-MMM-yyyy')}"></td>
 
 				<td><a href="#"
-					th:href="@{/campaign/edit(id=${CampaignModel.id})}">change</a></td>
+					th:href="@{/campaign/edit(id=${CampaignModel.id})}">change/Edit</a></td>
 			</tr>
 		</tbody>
 	</table>

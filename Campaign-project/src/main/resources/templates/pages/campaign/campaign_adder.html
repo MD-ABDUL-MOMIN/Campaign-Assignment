@@ -21,7 +21,7 @@
 		th:object="${campaignModel}" method="post">
 		<div class="col-md-12">
 			<label class="form-label"> Select CampaignGroup: </label> 
-			<select	th:object="${campaignGroupModel}">
+			<select	th:field="*{campaignGroupModel}">
 				<option th:each="campaignGroupModel: ${campaignGroups}"
 					th:value="${campaignGroupModel.id}"
 					th:text="${campaignGroupModel.name}">

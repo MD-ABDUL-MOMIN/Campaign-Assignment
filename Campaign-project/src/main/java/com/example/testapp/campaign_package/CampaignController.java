@@ -43,9 +43,10 @@ public class CampaignController {
 		model.addAttribute("campaignModel", camModel);
 		List<CampaignGroupModel> campaignGroupList = new ArrayList<CampaignGroupModel>();
 		campaignGroupList = campaignService.getCampaignGroups();
-		
+		CampaignGroupModel campaignGroupModel = new CampaignGroupModel();
+		model.addAttribute("campaignGroupModel", campaignGroupModel);
 		model.addAttribute("campaignGroups", campaignGroupList);
-	
+	    
 
 		return "pages/campaign/campaign_adder";
 	}
@@ -53,10 +54,8 @@ public class CampaignController {
 	
 	
 	@PostMapping("/campaign/add")
-	public String saveCampaign(@ModelAttribute CampaignModel campaignModel,@ModelAttribute  CampaignGroupModel campaignGroupModel) {
+	public String saveCampaign(@ModelAttribute CampaignModel campaignModel) {
 				
-		//campaignModel.setCampaignGroupModel(campaignGroupModel);
-		
 		campaignService.saveCampaign(campaignModel);
 
 		return "redirect:/campaign";
