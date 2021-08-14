@@ -34,7 +34,7 @@ public class CampaignModel {
     @Temporal(TemporalType.DATE)
 	private Date endDate;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = "campaign_group_id", nullable = false)
 	private CampaignGroupModel campaignGroupModel;
 
@@ -86,10 +86,6 @@ public class CampaignModel {
 		this.campaignGroupModel = campaignGroupModel;
 	}
 
-	@Override
-	public String toString() {
-		return "CampaignModel [id=" + id + ", name=" + name + ", description=" + description + ", startDate="
-				+ startDate + ", endDate=" + endDate + ", campaignGroupModel=" + campaignGroupModel + "]";
-	}
+
 
 }

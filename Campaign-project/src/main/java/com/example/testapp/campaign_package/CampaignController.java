@@ -55,7 +55,7 @@ public class CampaignController {
 	@PostMapping("/campaign/add")
 	public String saveCampaign(@ModelAttribute CampaignModel campaignModel,@ModelAttribute  CampaignGroupModel campaignGroupModel) {
 				
-		campaignModel.setCampaignGroupModel(campaignGroupModel);
+		//campaignModel.setCampaignGroupModel(campaignGroupModel);
 		
 		campaignService.saveCampaign(campaignModel);
 

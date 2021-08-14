@@ -30,7 +30,7 @@ public class CampaignGroupController {
 	}
 
 	
-	///Campaign group edit Getmapping and postmapping
+	/// Getmapping and postmapping to edit campaigngroup
 	
 	@GetMapping("/campaigngroup/edit")
 	public String modifyCampaignGroupById(@RequestParam("id") long id, Model model) {
