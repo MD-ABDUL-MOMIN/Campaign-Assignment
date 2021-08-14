@@ -43,6 +43,11 @@ public class CampaignService {
 		campaignRepository.save(campaignModel);
 		
 	}
+
+	public List<CampaignModel> findTop5CampaignList() {
+		// TODO Auto-generated method stub
+		return campaignRepository.findTop5ByOrderByIdDesc();
+	}
 	
 	
 

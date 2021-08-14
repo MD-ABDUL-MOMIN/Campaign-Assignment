@@ -24,7 +24,7 @@ public class CampaignController {
 	public String showCampaignList(Model model) {
 		
 		List<CampaignModel> campaigns = new ArrayList<CampaignModel>();
-		campaigns = campaignService.findCampaignList();
+		campaigns = campaignService.findTop5CampaignList();
 		model.addAttribute("campaigns", campaigns);
 		
 		return "pages/campaign/campaign_list";

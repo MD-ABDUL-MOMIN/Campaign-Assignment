@@ -18,13 +18,21 @@ public class CampaignGroupController {
 	@Autowired
 	CampaignGroupService campaignGroupService;
 
-    //Show campaign group list
+   
+	@GetMapping("/")
+	public String showHome(){
+		return "pages/home";
+		
+	}
+	
+	
+	 //Show campaign group list
 
 	@GetMapping("/campaigngroup")
 	public String getCampaignGroupPage(Model model) {
 
 		List<CampaignGroupModel> campaignGroupList = new ArrayList<CampaignGroupModel>();
-		campaignGroupList = campaignGroupService.getAllCampaignGroup();
+		campaignGroupList = campaignGroupService.getTop5CampaignGroup();
 		model.addAttribute("campaignGroupList", campaignGroupList);
 		return "pages/campaignGroup/campaigngroup_list";
 	}

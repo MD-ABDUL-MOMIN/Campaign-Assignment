@@ -15,9 +15,9 @@ public class CampaignGroupService {
 	@Autowired
 	CampaignGroupRepository campaignGroupRepository;
 
-	public List<CampaignGroupModel> getAllCampaignGroup() {
+	public List<CampaignGroupModel> getTop5CampaignGroup() {
 
-		return campaignGroupRepository.findAll();
+		return campaignGroupRepository.findTop5ByOrderByIdDesc();
 
 	}
 
@@ -48,9 +48,11 @@ public class CampaignGroupService {
 	}
 
 
-	public List<String> findsAllCampaignGroupNames() {
-		
-		return campaignGroupRepository.findCampaigngroupNames();
+	public List<CampaignGroupModel> getAllCampaignGroup() {
+		// TODO Auto-generated method stub
+		return campaignGroupRepository.findAll();
 	}
+
+
 
 }
