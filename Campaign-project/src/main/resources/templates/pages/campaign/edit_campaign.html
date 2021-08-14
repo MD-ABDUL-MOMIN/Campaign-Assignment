@@ -21,23 +21,30 @@
 		th:object="${campaignModel}" method="post">
 
 		<div class="col-md-12">
-			<label class="form-label"> Select CampaignGroup: </label> <select
+			<label class="form-label"> 
+			Select CampaignGroup: </label> 
+			<select
 				th:object="${campaignGroupModel}">
 				<option th:each="campaignGroupModel: ${campaignGroups}"
 					th:value="${campaignGroupModel.id}"
 					th:text="${campaignGroupModel.name}"></option>
 			</select>
 		</div>
+		
 		<div class="col-md-12">
-			<label class="form-label">Campaign name: </label> <input type="text"
-				class="form-control" th:field="*{name}"
-				value="${campaignModel.name} />
-		</div>
+			<label class="form-label">Campaign name: </label> 
+			
+			<input type="text"	class="form-control" th:field="*{name}"
+				value="${campaignModel.name}"/>
+			
+		 </div>
+		 
 		<div class="col-md-12">
 			<label class="form-label"> description:</label> <input
 				class="form-control" type="text" th:field="*{description}"
 				value="${campaignModel.description}" />
 		</div>
+		
 		<div class="col-md-12">
 			<label class="form-label"> start Date: </label> <input
 				class="form-control" type="date" th:field="*{startDate}"
