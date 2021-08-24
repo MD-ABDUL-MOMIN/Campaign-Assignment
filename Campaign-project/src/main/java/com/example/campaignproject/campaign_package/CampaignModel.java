@@ -1,4 +1,4 @@
-package com.example.testapp.campaign_package;
+package com.example.campaignproject.campaign_package;
 
 import java.util.Date;
 
@@ -14,7 +14,7 @@ import javax.persistence.TemporalType;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import com.example.testapp.campaign_group_package.CampaignGroupModel;
+import com.example.campaignproject.campaign_group_package.CampaignGroupModel;
 
 @Entity(name = "campaign")
 public class CampaignModel {

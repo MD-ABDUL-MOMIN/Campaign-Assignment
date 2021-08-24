@@ -1,4 +1,4 @@
-package com.example.testapp.campaign_group_package;
+package com.example.campaignproject.campaign_group_package;
 
 import java.util.List;
 import java.util.Optional;
@@ -9,25 +9,27 @@ import org.springframework.stereotype.Service;
 import javassist.NotFoundException;
 
 @Service
-public class CampaignGroupService {
+public class CampaignGroupService implements CrudOperatableInCampaignGroup{
 
 	@Autowired
 	private CampaignGroupRepository campaignGroupRepository;
 	
-
 	
+	@Override
 	public List<CampaignGroupModel> getTop5CampaignGroup() {
 
 		return campaignGroupRepository.findTop5ByOrderByIdDesc();
 
 	}
 
+	@Override
 	public CampaignGroupModel findCampaignGroupById(long id) {
 
 		return campaignGroupRepository.findById(id);
 
 	}
 
+	@Override
 	public void updateCampaignGroup(CampaignGroupModel campaignGroupModel) {
 
 		try {
@@ -42,11 +44,13 @@ public class CampaignGroupService {
 
 	}
 
+	@Override
 	public void saveCampaignGroup(CampaignGroupModel campaignGroupModel) {
 		campaignGroupRepository.save(campaignGroupModel);
 
 	}
 
+	@Override
 	public List<CampaignGroupModel> getAllCampaignGroup() {
 		// TODO Auto-generated method stub
 		return campaignGroupRepository.findAll();

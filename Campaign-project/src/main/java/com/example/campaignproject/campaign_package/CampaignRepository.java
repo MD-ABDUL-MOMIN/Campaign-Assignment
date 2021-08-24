@@ -1,4 +1,4 @@
-package com.example.testapp.campaign_package;
+package com.example.campaignproject.campaign_package;
 
 import java.util.List;
 

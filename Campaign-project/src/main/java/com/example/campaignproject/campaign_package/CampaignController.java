@@ -1,4 +1,4 @@
-package com.example.testapp.campaign_package;
+package com.example.campaignproject.campaign_package;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,13 +12,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.example.testapp.campaign_group_package.CampaignGroupModel;
+import com.example.campaignproject.campaign_group_package.CampaignGroupModel;
 
 @Controller
 public class CampaignController {
 
 	@Autowired
-	private CampaignService campaignService;
+	private CrudOperatableInCampaign campaignService;
 
 	/*************************** Campaign List ***********************************/
 

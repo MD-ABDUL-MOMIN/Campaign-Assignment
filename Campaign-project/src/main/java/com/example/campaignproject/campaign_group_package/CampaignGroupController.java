@@ -1,4 +1,4 @@
-package com.example.testapp.campaign_group_package;
+package com.example.campaignproject.campaign_group_package;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class CampaignGroupController {
 
 	@Autowired
-	private CampaignGroupService campaignGroupService;
+	private CrudOperatableInCampaignGroup campaignGroupService;
 
 	/*************************** home page ***********************************/
 

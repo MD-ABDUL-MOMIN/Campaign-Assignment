@@ -1,4 +1,4 @@
-package com.example.testapp.campaign_group_package;
+package com.example.campaignproject.campaign_group_package;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import com.example.testapp.campaign_package.CampaignModel;
+import com.example.campaignproject.campaign_package.CampaignModel;
 
 @Entity(name = "campaigngroup")
 public class CampaignGroupModel {
