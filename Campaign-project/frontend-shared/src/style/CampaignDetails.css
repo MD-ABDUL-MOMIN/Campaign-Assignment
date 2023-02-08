@@ -1,0 +1,19 @@
+.campaign-table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 30px;
+}
+
+.campaign-table th,
+.campaign-table td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: center;
+}
+
+.campaign-table th {
+    background-color: lightgray;
+}
+
+
+
