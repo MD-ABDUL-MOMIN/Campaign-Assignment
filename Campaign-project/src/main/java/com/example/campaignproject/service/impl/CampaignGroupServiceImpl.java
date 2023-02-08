@@ -1,7 +1,9 @@
 package com.example.campaignproject.service.impl;
 
 import java.util.List;
+import java.util.Optional;
 
+import com.example.campaignproject.exception.NotFoundException;
 import com.example.campaignproject.service.CampaignGroupService;
 import com.example.campaignproject.model.CampaignGroup;
 import com.example.campaignproject.repository.CampaignGroupRepository;
@@ -26,9 +28,10 @@ public class CampaignGroupServiceImpl implements CampaignGroupService {
 	}
 
 	@Override
-	public CampaignGroup findCampaignGroupById(long id) {
+	public CampaignGroup getCampaignGroup(long id) {
 
-		return campaignGroupRepository.findById(id);
+		return Optional.of(campaignGroupRepository.findById(id))
+				.orElseThrow(NotFoundException::new);
 
 	}
 
@@ -48,9 +51,8 @@ public class CampaignGroupServiceImpl implements CampaignGroupService {
 	}
 
 	@Override
-	public void saveCampaignGroup(CampaignGroup campaignGroup) {
-		campaignGroupRepository.save(campaignGroup);
-
+	public CampaignGroup saveCampaignGroup(CampaignGroup campaignGroup) {
+		return campaignGroupRepository.save(campaignGroup);
 	}
 
 	@Override
@@ -59,4 +61,11 @@ public class CampaignGroupServiceImpl implements CampaignGroupService {
 		return campaignGroupRepository.findAll();
 	}
 
+	@Override
+	public void removeGroup(Long groupId) {
+		CampaignGroup campaignGroup = campaignGroupRepository.findById(groupId)
+				.orElseThrow(NotFoundException::new);
+		campaignGroupRepository.delete(campaignGroup);
+
+	}
 }

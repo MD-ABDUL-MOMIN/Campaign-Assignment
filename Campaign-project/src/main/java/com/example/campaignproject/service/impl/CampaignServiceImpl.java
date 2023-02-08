@@ -2,6 +2,7 @@ package com.example.campaignproject.service.impl;
 
 import java.util.List;
 
+import com.example.campaignproject.exception.NotFoundException;
 import com.example.campaignproject.model.Campaign;
 import com.example.campaignproject.repository.CampaignRepository;
 import com.example.campaignproject.service.CampaignService;
@@ -35,9 +36,9 @@ public class CampaignServiceImpl implements CampaignService {
 
 	
 	@Override
-	public Campaign findCampaignById(long id) {
+	public Campaign getCampaign(long id) {
 
-		return campaignRepository.getById(id);
+		return campaignRepository.findById(id).orElseThrow(NotFoundException::new);
 
 	}
 

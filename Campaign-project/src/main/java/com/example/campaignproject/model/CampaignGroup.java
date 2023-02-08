@@ -1,5 +1,7 @@
 package com.example.campaignproject.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -9,7 +11,9 @@ import java.util.List;
 import javax.persistence.*;
 
 @Data
+@Builder
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity(name = "campaigngroup")
 public class CampaignGroup implements Versionable{
 

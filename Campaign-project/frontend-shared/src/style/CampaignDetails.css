@@ -1,6 +1,7 @@
 .campaign-table {
     border-collapse: collapse;
     width: 100%;
+    margin: 30px;
 }
 
 .campaign-table th,

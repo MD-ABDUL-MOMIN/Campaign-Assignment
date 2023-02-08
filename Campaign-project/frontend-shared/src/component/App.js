@@ -1,8 +1,8 @@
 import '../App.css';
 import {BrowserRouter as Router, Link, Routes, Route} from 'react-router-dom';
-import CampaignDetails from "./CampaignDetails";
-import AddCampaign from "./AddCampaign";
-import DeleteCampaign from "./DeleteCampaign";
+import Home from "./Home";
+import Campaign from "./campaign/Campaign";
+import CampaignGroup from "./campaigngroup/CampaignGroup";
 
 
 function App() {
@@ -12,20 +12,20 @@ function App() {
               <nav>
                   <ul>
                       <li>
-                          <Link to="/">campaign list</Link>
+                          <Link to="/">Home</Link>
                       </li>
                       <li>
-                          <Link to="/campaign/add">Add Campaign</Link>
+                          <Link to="/campaign">Campaign</Link>
                       </li>
                       <li>
-                          <Link to="/campaign/delete">Delete Campaign</Link>
+                          <Link to="/campaigngroup">CampaignGroup</Link>
                       </li>
                   </ul>
               </nav>
               <Routes>
-              <Route exact path="/" element={<CampaignDetails/>} />
-              <Route path="/campaign/add" element={<AddCampaign/>} />
-              <Route path="/campaign/delete" element={<DeleteCampaign/>} />
+              <Route exact path="/" element={<Home/>} />
+              <Route exact path="/campaign" element={<Campaign/>} />
+              <Route exact path="/campaigngroup" element={<CampaignGroup/>} />
               </Routes>
           </div>
       </Router>

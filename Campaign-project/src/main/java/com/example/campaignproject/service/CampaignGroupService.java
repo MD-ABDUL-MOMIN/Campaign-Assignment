@@ -8,12 +8,13 @@ public interface CampaignGroupService {
 
 	public List<CampaignGroup> getTop5CampaignGroup();
 
-	public CampaignGroup findCampaignGroupById(long id);
+	public CampaignGroup getCampaignGroup(long id);
 
 	public void updateCampaignGroup(CampaignGroup campaignGroup);
 
-	public void saveCampaignGroup(CampaignGroup campaignGroup);
+	public CampaignGroup saveCampaignGroup(CampaignGroup campaignGroup);
 
 	public List<CampaignGroup> getAllCampaignGroup();
 
+    void removeGroup(Long groupId);
 }

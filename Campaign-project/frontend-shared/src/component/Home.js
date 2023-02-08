@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react';
 import "../style/CampaignDetails.css";
 
-function CampaignDetails() {
+function Home() {
     const [campaignsInfo, setCampaignsInfo] = useState([{}]);
     const [show, setShow] = useState(0);
     const fetchData = () => {
@@ -25,13 +25,14 @@ function CampaignDetails() {
 
 
     return (
+        <div>
         <table className="campaign-table">
             <thead>
             <tr>
-                <td>Id</td>
-                <td>Name</td>
-                <td>Description</td>
-                <td>GroupName</td>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>GroupName</th>
             </tr>
             </thead>
             <tbody>
@@ -47,10 +48,9 @@ function CampaignDetails() {
                 ))
                 }
             </tbody>
-
-            {/*<button onClick={()=> toggle()}>{show === 0? "Show" : "Hide"}</button>*/}
         </table>
+        </div>
     );
 }
 
-export default CampaignDetails;
+export default Home;

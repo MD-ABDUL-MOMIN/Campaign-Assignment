@@ -9,7 +9,6 @@ import com.example.campaignproject.service.CampaignService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.NonNull;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,6 +32,7 @@ public class CampaignController {
                         .description(campaignModel.getDescription())
                         .groupName(campaignModel.getCampaignGroup().getName())
                         .build())
+                .sorted((o1, o2) -> o1.getId().compareTo(o2.getId()))
                 .collect(Collectors.toList()));
 
     }
@@ -41,7 +41,7 @@ public class CampaignController {
     @PostMapping("/campaign/add")
     public void addCampaign(@RequestBody CampaignParameters campaignParameters, BindingResult bindingResult) {
         Campaign newCampaign = Campaign.builder()
-                .campaignGroup(campaignGroupService.findCampaignGroupById(campaignParameters.getGroupId()))
+                .campaignGroup(campaignGroupService.getCampaignGroup(campaignParameters.getGroupId()))
                 .description(campaignParameters.getDescription())
                 .name(campaignParameters.getName())
                 .build();
@@ -50,7 +50,7 @@ public class CampaignController {
 
     @DeleteMapping("/campaign/delete")
     public void deleteCampaign(@RequestBody CampaignParameters campaignParameters, BindingResult bindingResult) {
-        Campaign newCampaign = campaignService.findCampaignById(campaignParameters.getCampaignId());
+        Campaign newCampaign = campaignService.getCampaign(campaignParameters.getCampaignId());
         campaignService.deleteCampaign(newCampaign);
     }
 }

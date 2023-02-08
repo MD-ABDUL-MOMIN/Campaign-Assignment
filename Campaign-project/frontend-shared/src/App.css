@@ -12,3 +12,24 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+
+nav ul {
+  display: flex;
+  list-style: none;
+  margin: 30px;
+  padding: 30px;
+  background-color: black;
+}
+
+nav li {
+  margin-right: 30px;
+  font-size: 20px;
+
+}
+
+nav li a {
+  text-decoration: none;
+  color: white;
+}
+
+

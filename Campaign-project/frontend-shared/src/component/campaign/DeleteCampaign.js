@@ -1,4 +1,5 @@
 import {useEffect, useState} from "react";
+import Modal from 'react-modal';
 
 export default function DeleteCampaign() {
     const [showModal, setShowModal] = useState(false);
@@ -34,12 +35,9 @@ export default function DeleteCampaign() {
 
     return (
         <div>
-            <button onClick={() => setShowModal(true)}>Delete Campaign</button>
-            {
-                showModal && (
-                    <div className="modal">
-                        <div className="modal-content">
-                            <form onSubmit={handleSubmit}>
+            <button onClick={() => setShowModal(true)} style={{ margin: "20px"}}>Delete Campaign</button>
+            <Modal isOpen={showModal}>
+                <form onSubmit={handleSubmit}>
                                 <h2>Select Campaign</h2>
                                 <label htmlFor="name">Campaign Name</label>
                                 <select
@@ -57,15 +55,13 @@ export default function DeleteCampaign() {
                                 </select>
                                 />
                                 <br/>
-                                <button type="submit">Submit</button>
+                                <button type="submit">Confirm</button>
                                 <button type="button" onClick={() => setShowModal(false)}>
-                                    Close
+                                    Cancel
                                 </button>
                             </form>
-                        </div>
-                    </div>
-                )
-            }
+            </Modal>
+
         </div>
 
     );
