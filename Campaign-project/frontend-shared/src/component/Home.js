@@ -5,7 +5,13 @@ function Home() {
     const [campaignsInfo, setCampaignsInfo] = useState([{}]);
     const [show, setShow] = useState(0);
     const fetchData = () => {
-        fetch('http://localhost:8080/campaigns')
+        const token = localStorage.getItem("token");
+        fetch('http://localhost:8080/campaigns', {
+           headers : {
+               "Content-Type": "application/json",
+               "Authorization": token
+           }
+        })
             .then(response => response.json())
             .then(data => {
                 setCampaignsInfo(data);

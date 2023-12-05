@@ -5,6 +5,7 @@ export default function DeleteCampaign() {
     const [showModal, setShowModal] = useState(false);
     const [campaignId, setCampaignId] = useState();
     const [optionValues, setOptionValues] = useState([]);
+    const token = localStorage.getItem("token");
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -14,7 +15,8 @@ export default function DeleteCampaign() {
         fetch('http://localhost:8080/campaign/delete', {
             method: 'DELETE',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                "Authorization": token
             },
             body: JSON.stringify(formData)
         }).then(response => response.json())
@@ -26,7 +28,12 @@ export default function DeleteCampaign() {
 
     }
     useEffect(() => {
-             fetch('http://localhost:8080/campaigns')
+             fetch('http://localhost:8080/campaigns', {
+                 headers: {
+                     'Content-Type': 'application/json',
+                     "Authorization": token
+                 },
+             })
                  .then(response => response.json())
                  .then(data => {
                      setOptionValues(data);

@@ -14,7 +14,8 @@ export default function DeleteCampaignGroup() {
         fetch('http://localhost:8080/campaigngroup/delete', {
             method: 'DELETE',
             headers: {
-                'Content-Type': 'application/json'
+                "Content-Type": "application/json",
+                'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJTb2ppYiIsImlhdCI6MTY4MzQyNzgyN30.An_URY-6lK2pP40n7jy1yTNesQpLuQT2gEIAgTWPl94'
             },
             body: JSON.stringify(formData)
         }).then(response => response.json())
@@ -25,7 +26,12 @@ export default function DeleteCampaignGroup() {
 
     }
     useEffect(() => {
-             fetch('http://localhost:8080/campaigngroups')
+             fetch('http://localhost:8080/campaigngroups', {
+                 headers: {
+                     "Content-Type": "application/json",
+                     'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJTb2ppYiIsImlhdCI6MTY4MzQyNzgyN30.An_URY-6lK2pP40n7jy1yTNesQpLuQT2gEIAgTWPl94'
+                 }})
+
                  .then(response => response.json())
                  .then(data => {
                      setOptionValues(data);
