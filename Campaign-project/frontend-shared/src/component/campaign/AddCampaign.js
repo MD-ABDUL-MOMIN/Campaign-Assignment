@@ -7,7 +7,7 @@ export default function AddCampaign() {
     const [description, setDescription] = useState("");
     const [groupId, setGroupId] = useState();
     const [optionValues, setOptionValues] = useState([]);
-
+    const [token] = localStorage.getItem("token");
     const handleSubmit = e => {
         e.preventDefault();
         const formData = {
@@ -15,8 +15,9 @@ export default function AddCampaign() {
         }
         fetch('http://localhost:8080/campaign/add', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
+            headers : {
+                "Content-Type": "application/json",
+                "Authorization": token
             },
             body: JSON.stringify(formData)
         }).then(response => response.json())
@@ -28,7 +29,16 @@ export default function AddCampaign() {
 
     }
     useEffect(() => {
-        fetch('http://localhost:8080/campaigngroups')
+        fetch('http://localhost:8080/campaigngroups',{
+            headers : {
+                "Content-Type": "application/json",
+                "Authorization": token
+            }},
+            fetch('http://localhost:8080/campaign/add', {
+                headers : {
+                    "Content-Type": "application/json",
+                    "Authorization": token
+                }}))
             .then(response => response.json())
             .then(data => {
                 setOptionValues(data);

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.stream.Collectors;
 
 @RestController
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequiredArgsConstructor(onConstructor_ = @Autowired)
 public class CampaignGroupController {
 
